@@ -1,0 +1,1 @@
+These files need to be edited with relevant information and moved to the /conf directory in the docker container. It is anticipated that this can (and most likely will) be done by attaching it at runtime using a docker volume attach.
