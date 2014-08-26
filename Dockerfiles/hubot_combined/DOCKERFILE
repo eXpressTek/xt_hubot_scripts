@@ -7,9 +7,10 @@ MAINTAINER Daniel Kenner <daniel@expresstek.us>
 
 #install basics
 #much of this first part was shamelessly "borrowed" from http://www.fullybaked.co.uk/articles/install-hubot-on-centos-6-4-64bit
-RUN yum -y update
+#I know the || true isn't great to have in here but it fixes a problem with systemd not being installed because it's docker.
+RUN yum -y update || true
 
-RUN yum -y groupinstall 'Development tools'
+RUN yum -y groupinstall 'Development tools' || true
 
 #wget is required(ish), nano is just nice.
 
@@ -27,7 +28,7 @@ RUN npm install -g coffee-script hubot
 
 #here is where Redis would have to be installed. However, I could not easily get redis to install/startup because docker doesn't use the service daemon. To get around this I decided it would probably be best just to use a redis docker image, which works well. This is included at the end.
 
-RUN cd && hubot -- create hubot && cd hubot && npm install
+RUN cd && hubot --create hubot && cd hubot && npm install
 
 #now we need to install hubot IRC
 #from https://github.com/nandub/hubot-irc
@@ -51,7 +52,7 @@ RUN pip install pysnmp
 
 #alright, background setup is complete. Now we can get the updated scripts (which should be in a github repo by this point) and move them into place
 
-RUN cd && git clone https://github.com/eXpressTek/xt_hubot_scripts.git && cp /xt_hubot_scripts/* /hubot/scripts
+RUN cd && git clone https://github.com/eXpressTek/xt_hubot_scripts.git && cp -R /xt_hubot_scripts/* /hubot/scripts
 
 #now that the scripts are in place, they should load when hubot loads
 
