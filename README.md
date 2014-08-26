@@ -61,4 +61,4 @@ cd Dockerfiles/hubot_combined && sudo docker build . && docker pull redis:latest
 
 Running:
 
-docker run --name redis-brain -d redis:latest && docker run -d --name hubot\_app --link redis-brain:redis -e 'HUBOT\_IRC\_SERVER=irc.example.com' -e 'HUBOT\_IRC\_ROOMS=#general' -e 'HUBOT\_IRC\_NICK=hubot' -e 'HUBOT\_IRC\_PASSWORD=pass' -e 'HUBOT\_IRC\_USESSL=True' -e 'REDIS_URL=redis://redis:6379' -d hubot\_image
+docker run --name redis-brain -d redis:latest && docker run -d --name hubot\_app --link redis-brain:redis -e 'HUBOT\_IRC\_SERVER=irc.example.com' -e 'HUBOT\_IRC\_ROOMS=#general' -e 'HUBOT\_IRC\_NICK=hubot' -e 'HUBOT\_IRC\_PASSWORD=pass' -e 'HUBOT\_IRC\_USESSL=True' -e 'REDIS_URL=redis://redis:6379' hubot\_image
