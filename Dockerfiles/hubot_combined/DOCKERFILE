@@ -55,3 +55,4 @@ RUN cd && git clone https://github.com/eXpressTek/xt_hubot_scripts.git && cp /xt
 
 #now that the scripts are in place, they should load when hubot loads
 
+ENTRYPOINT /hubot/bin/hubot -a irc
