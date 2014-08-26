@@ -52,8 +52,8 @@ RUN pip install pysnmp
 
 #alright, background setup is complete. Now we can get the updated scripts (which should be in a github repo by this point) and move them into place
 
-RUN cd && git clone https://github.com/eXpressTek/xt_hubot_scripts.git && cp -R /xt_hubot_scripts/* /hubot/scripts
+RUN cd && git clone https://github.com/eXpressTek/xt_hubot_scripts.git && cp /xt_hubot_scripts/start_hubot.sh /start_hubot.sh && cp -R /xt_hubot_scripts/* /hubot/scripts
 
 #now that the scripts are in place, they should load when hubot loads
 
-ENTRYPOINT /hubot/bin/hubot -a irc
+ENTRYPOINT /start_hubot.sh
