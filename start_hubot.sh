@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /hubot/
-./bin/bash -a irc
+./bin/hubot -a irc
